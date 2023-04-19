@@ -1,5 +1,7 @@
 const questionText = document.querySelector(".pertanyaan");
 const optionContainer = document.querySelector(".pilihan");
+const musuh = document.getElementById("musuh");
+const naruto = document.getElementById("naruto");
 
 let questionCounter = 0;
 let currentQuestion;
@@ -55,25 +57,54 @@ function getResult(element){
     if(id === currentQuestion.answer){
         console.log("Answer correct");
         element.classList.add("correct");
-        let block = document.querySelector(".block");
-
-        block.style.animationName = "none";
-
-        requestAnimationFrame(() => {
-        });
-        block.style.animationName = "";
+        stopAnimation();
         if(questionCounter === quiz.length){
             console.log("Congratulations, you finished the quiz!!");
+            musuh.style.visibility = 'hidden';
+            narutoDiam();
         }
         else{
             getNewQuestion();
-            block.style.animationName = "none";
-            var element = document.getElementById("block"); 
+            restartAnimation();
         }
     }
     else{
         console.log("Answer incorrect")
     }
+}
+
+
+function stopAnimation(){
+    // Hapus kelas CSS
+    musuh.classList.remove("block");
+}
+
+function restartAnimation() {
+    // Jalankan kelas CSS lagi
+    void musuh.offsetWidth;
+    musuh.classList.add("block");
+}
+
+function narutoDiam(){
+    const narutoimg = naruto.querySelector("img");
+    
+    naruto.removeChild(narutoimg);
+
+    const narutoimgnew = document.createElement('img');
+    narutoimgnew.setAttribute('src', './image/narutodiam.png');
+    naruto.appendChild(narutoimgnew);
+}
+
+function narutoBergerak(){
+    const narutoimgnew = document.createElement('img');
+    narutoimgnew.setAttribute('src', './image/pixil-gif-drawing-unscreen.gif');
+    naruto.appendChild(narutoimgnew);
+}
+
+function musuhMuncul(){
+    const musuhimgnew = document.createElement('img');
+    musuhimgnew.setAttribute('src', './image/lawan.gif');
+    musuh.appendChild(musuhimgnew);
 }
 
 function next(){
@@ -90,4 +121,8 @@ window.onload = function(){
     setAvailableQuestions();
 
     getNewQuestion();
+    
+    narutoBergerak();
+
+    musuhMuncul();
 }

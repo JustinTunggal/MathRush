@@ -41,6 +41,10 @@ body{
     height: 50px;
 }
 
+.char{
+    position: relative;
+}
+
 .char img{
     width: 180px;
     height: 230px;
@@ -49,12 +53,15 @@ body{
     left: 100px;
 }
 
-.block img{
+#musuh img{
     width: 125px;
     height: 150px;
     position: relative;
     top: 115px;
     left: 1500px;
+}
+
+.block img{
     animation: block 20s infinite linear;
 }
 

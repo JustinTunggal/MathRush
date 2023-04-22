@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name = "viewport" content = "width=device-width, minimum-scale=1, maximum-scale = 1, user-scalable = no">
     <link rel="stylesheet" href="./styleadminlogin.css">
     <title>Math Rush</title>
 </head>
@@ -17,14 +17,17 @@
     <div class="kotak">
         <h2>Username</h2>
         <div style="padding-bottom: 50px;" class="inputbox">
-            <input type="text" placeholder="Username">
+        <form action="mathrush.html">
+            <input id="userInput" type="text" placeholder="Username" required >
         </div>
 
         <div class="inputbox">
-            <input type="submit" value="START" id="btn" onclick="location.href='mathrush.html';">
+            <input type="submit" value="START" id="btn" onclick="username();">
         </div>
+        </form> 
     </div>
-    
+
+
     <script src="./home.js"></script>
 </body>
 </html>

@@ -7,6 +7,7 @@ let questionCounter = 0;
 let currentQuestion;
 let availableQuestions = [];
 let availableOptions = [];
+let count = 0;
 
 function setAvailableQuestions(){
     const totalQuestions = quiz.length;
@@ -56,6 +57,8 @@ function getResult(element){
     //result come from comparing id of clicked question to id of answer
     if(id === currentQuestion.answer){
         console.log("Answer correct");
+        count+=1;
+        document.getElementById("playerScore").innerHTML = "Score: " + count;
         element.classList.add("correct");
         stopAnimation();
         if(questionCounter === quiz.length){

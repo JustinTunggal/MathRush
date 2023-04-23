@@ -19,6 +19,13 @@ body{
     color: #B6ACAC;
 }
 
+.game {
+    text-align: center;
+    left: 50%;
+    top: 75%;
+    transform: translate(-50%, -0%);
+}
+
 .score {
     font-size: xx-large;
     color: #E60303;
@@ -145,4 +152,76 @@ section{
 @keyframes block {
     0%{left: 1700px;}
     100%{left: 150px;}
+}
+
+.kotak {
+    width: 967px;
+    height: 350px;
+    background-color: rgba(92, 87, 87, 0.95); 
+    color: white;
+    border-radius: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    scale: 0;
+    position: absolute;
+    text-align: center;
+    align-items: center;
+    z-index: 10;
+    transition: width 1s ease-in;
+}
+
+.kotak.active{
+    scale: 1;
+}
+
+.kotak .gameovertext{
+    font-size: 100px;
+    color:#c82222;
+    animation: color-change 5s infinite;
+}
+
+@keyframes color-change {
+    0%{color: #c82222;}
+    15%{color: #c82222;}
+    30%{color:bisque}
+    50%{color: burlywood;}
+    75%{color: rgb(106, 129, 170);}
+    90%{color: cornflowerblue;}
+    100%{color: #330a0a;}
+}
+
+.kotak .button{
+    width: 160px;
+    height: 50px;
+    font-size: 25px;
+    border: none;
+    border-radius: 12px;
+    color: #d1d0d0;
+    background: transparent;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+.kotak .button:hover{
+    color: black;
+    background-color:#d1d0d0;
+}
+
+
+#overlay {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+
+#overlay.active{
+    pointer-events: all;
+    opacity: 1;
 }

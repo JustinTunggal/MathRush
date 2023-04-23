@@ -2,6 +2,8 @@ const questionText = document.querySelector(".pertanyaan");
 const optionContainer = document.querySelector(".pilihan");
 const musuh = document.getElementById("musuh");
 const naruto = document.getElementById("naruto");
+const hasilakhir = document.getElementById('kotak');
+const overlay = document.getElementById('overlay');
 
 let questionCounter = 0;
 let currentQuestion;
@@ -63,6 +65,7 @@ function getResult(element){
         stopAnimation();
         if(questionCounter === quiz.length){
             console.log("Congratulations, you finished the quiz!!");
+            popuphasil();
             musuh.style.visibility = 'hidden';
             narutoDiam();
         }
@@ -76,6 +79,11 @@ function getResult(element){
     }
 }
 
+
+function popuphasil(){
+    kotak.classList.add('active');
+    overlay.classList.add('active')
+}
 
 function stopAnimation(){
     // Hapus kelas CSS

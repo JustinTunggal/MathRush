@@ -10,6 +10,13 @@ body {
   background-size: cover;
 }
 
+.trophy {
+  width: 100px;
+  height: auto;
+  margin-left: 910px;
+  margin-top: 70px;
+}
+
 .kotak {
   width: 627px;
   height: 35 0px;

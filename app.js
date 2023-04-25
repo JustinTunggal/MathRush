@@ -5,6 +5,7 @@ const naruto = document.getElementById("naruto");
 const hasilakhir = document.getElementById('kotak');
 const overlay = document.getElementById('overlay');
 
+
 let questionCounter = 0;
 let currentQuestion;
 let availableQuestions = [];
@@ -68,17 +69,22 @@ function getResult(element){
             popuphasil();
             musuh.style.visibility = 'hidden';
             narutoDiam();
+            countDown = 20;
         }
         else{
             getNewQuestion();
+            stopTimer();
             restartAnimation();
+            startTimer();
         }
     }
     else{
         console.log("Answer incorrect")
+        popuphasil();
+        narutoDiam();
+        musuh.style.visibility = 'hidden';
     }
 }
-
 
 function popuphasil(){
     kotak.classList.add('active');
@@ -127,6 +133,25 @@ function next(){
     }
 }
 
+var countDown = 20;
+var x;
+
+function startTimer(){
+    x = setInterval(function() {
+        countDown--;
+    
+        if(countDown === 0) {
+            clearInterval(x);
+            popuphasil();
+        }
+    }, 1000);
+}
+
+function stopTimer(){
+    clearInterval(x);
+    countDown =20;
+}
+
 window.onload = function(){
     //set all questions in the array
     setAvailableQuestions();
@@ -136,4 +161,9 @@ window.onload = function(){
     narutoBergerak();
 
     musuhMuncul();
+
+    startTimer();
 }
+
+
+

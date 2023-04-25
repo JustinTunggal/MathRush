@@ -6,6 +6,8 @@ body{
     padding: 0;
     background-image: url(./image/download\ \(1\)\ 3.png);
     font-family: 'Poppins', sans-serif;
+      background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .kotak{

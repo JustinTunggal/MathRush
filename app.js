@@ -90,6 +90,7 @@ function popuphasil(){
     kotak.classList.add('active');
     overlay.classList.add('active')
 }
+    
 
 function stopAnimation(){
     // Hapus kelas CSS

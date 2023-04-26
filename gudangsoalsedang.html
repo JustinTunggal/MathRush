@@ -17,10 +17,10 @@
     </div>
 
     <div class="kotak">
-      <h2>GUDANG SOAL MUDAH</h2>
+      <h2>GUDANG SOAL SEDANG</h2>
       <div class="tingkatkesusahan">
         <div class="tampilsoal">
-            <table border="1" class="table">
+            <table border="1" class="table" id="table">
                 <tr>
                     <th>No</th>
                   <th>SOAL</th>
@@ -29,23 +29,7 @@
                   <th>Jawaban3</th>
                   <th>Hapus</th>
                 </tr>
-                <tr>
-                    <td>1</td>
-                  <td>1 + 2 =</td>
-                  <td>3</td>
-                  <td>2</td>
-                  <td>1</td>
-                  <td><button><img src="./image/delete.png" alt=""></button></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                  <td>kapan hujan</td>
-                  <td>siang</td>
-                  <td>sore</td>
-                  <td>pagi</td>
-                  <td><button><img src="./image/delete.png" alt=""></button></td>
-                </tr>
-              </table>
+            </table>
 
       <div class="inputbox">
         <input
@@ -56,5 +40,78 @@
         />
       </div>
     </div>
+
+    <script>
+        let mediumquestions = [];
+        const table = document.getElementById("table");
+    
+        function showsoalmenengah() {
+            let i = 1;
+
+            fetch('http://localhost:5000/soalmenengah')
+            .then(response => response.json())
+            .then(data => {
+            mediumquestions = data;
+            mediumquestions.forEach(mediumquestion => {
+            
+            const tablerow = document.createElement("tr");
+            table.appendChild(tablerow);
+            const nomor = document.createElement("td");
+            nomor.innerHTML = i;
+            tablerow.appendChild(nomor);
+            const tekssoal = document.createElement("td");
+            tekssoal.innerHTML = mediumquestion.teks_menengah;
+            tablerow.appendChild(tekssoal);
+            const pilihanbenar = document.createElement("td");
+            pilihanbenar.innerHTML = mediumquestion.pilihanbenar_menengah;
+            tablerow.appendChild(pilihanbenar);
+            const pilihan1 = document.createElement("td");
+            pilihan1.innerHTML = mediumquestion.pilihan1_menengah;
+            tablerow.appendChild(pilihan1);
+            const pilihan2 = document.createElement("td");
+            pilihan2.innerHTML = mediumquestion.pilihan2_menengah;
+            tablerow.appendChild(pilihan2);
+            const tabletombolhapus = document.createElement("td");
+            tablerow.appendChild(tabletombolhapus)
+            const tombolhapus = document.createElement("button");
+            tabletombolhapus.appendChild(tombolhapus);
+            tombolhapus.id = mediumquestion.id;
+            tombolhapus.addEventListener("click", function() {
+                hapusSoal(this.id);
+            });
+            const tongsampah = document.createElement("img");
+            tongsampah.setAttribute('src', './image/delete.png');
+            tombolhapus.appendChild(tongsampah);
+            i++
+            });
+          })
+            .catch(error => {
+            console.log(error);
+          });
+        }
+
+        function hapusSoal(id) {
+            fetch(`http://localhost:5000/soalmenengah/${id}`, {
+              method: "DELETE"
+            })
+          .then(response => response.json())
+          .then(data => {
+              console.log(data);
+              // jika berhasil dihapus, hapus juga baris tabel yang sesuai
+              const row = document.getElementById(id).parentNode.parentNode;
+              row.parentNode.removeChild(row);
+          })
+          .catch(error => {
+              console.log(error);
+          });
+          
+          location.reload();
+        }
+
+
+        window.onload = function() {
+          showsoalmenengah();
+        }
+    </script>
   </body>
 </html>

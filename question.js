@@ -14,4 +14,10 @@ const quiz = [
         options:['1','2','3'],
         answer:2
     },
-]
+];
+
+const soalmudaharray = [];
+
+const soalmenengaharray = [];
+
+const soalsulitarray = [];

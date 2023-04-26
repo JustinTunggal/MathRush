@@ -37,6 +37,71 @@
 
     <script src="./question.js"></script>
     <script src="./app.js"></script>
+    <script>
+        fetch('http://localhost:5000/soalmudah')
+        .then(response => response.json())
+        .then(data => {
+        easyquestions = data;
+        easyquestions.forEach(easyquestion => {
+        
+            questions = {
+                q: easyquestion.teks_mudah,
+                options: [easyquestion.pilihanbenar_mudah, easyquestion.pilihan1_mudah, easyquestion.pilihan2_mudah],
+                answer:0
+            };
+
+            soalmudaharray.push(questions);
+            });
+
+            console.log(soalmudaharray);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
+        fetch('http://localhost:5000/soalmenengah')
+        .then(response => response.json())
+        .then(data => {
+        mediumquestions = data;
+        mediumquestions.forEach(mediumquestion => {
+        
+            questions = {
+                q: mediumquestion.teks_menengah,
+                options: [mediumquestion.pilihanbenar_menengah, mediumquestion.pilihan1_menengah, mediumquestion.pilihan2_menengah],
+                answer:0
+            };
+
+            soalmenengaharray.push(questions);
+            });
+
+            console.log(soalmenengaharray);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
+        fetch('http://localhost:5000/soalsulit')
+        .then(response => response.json())
+        .then(data => {
+        hardquestions = data;
+        hardquestions.forEach(hardquestion => {
+        
+            questions = {
+                q: hardquestion.teks_sulit,
+                options: [hardquestion.pilihanbenar_sulit, hardquestion.pilihan1_sulit, hardquestion.pilihan2_sulit],
+                answer:0
+            };
+
+            soalsulitarray.push(questions);
+            });
+
+            console.log(soalsulitarray);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
+    </script>
     <script src="./home.js"></script>
     </body>
     </html>

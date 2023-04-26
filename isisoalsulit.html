@@ -8,6 +8,52 @@
     <title>Admin Math Rush</title>
 </head>
 <body>
+    <script>
+        function simpansoalsulit(){
+            
+            var teks = document.getElementById("teks_sulit").value;
+            var pilihanbenar = document.getElementById("pilihanbenar_sulit").value;
+            var pilihan1 = document.getElementById("pilihan1_sulit").value;
+            var pilihan2 = document.getElementById("pilihan2_sulit").value;
+
+            const soalsulit = {
+                teks_sulit: teks,
+                pilihanbenar_sulit: pilihanbenar,
+                pilihan1_sulit: pilihan1,
+                pilihan2_sulit: pilihan2
+            }
+
+            if(teks!='' && pilihanbenar!='' && pilihan1!='' && pilihan2!=''){
+                fetch('http://localhost:5000/soalsulit', {
+                    method: 'POST',
+                    headers: {
+                    'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(soalsulit)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(soalsulit);
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+            }
+
+            document.querySelector('#teks_sulit').value = '';
+            document.querySelector('#pilihanbenar_sulit').value = '';
+            document.querySelector('#pilihan1_sulit').value = '';
+            document.querySelector('#pilihan2_sulit').value = '';
+        };
+
+    </script>
+
+
     <div class="atasan">
         <img src="./image/logo Della 1.png" alt="">
         <h1 style="color: #FF2B2B;">Math<span style="color: #FF9900;">Rush</span></h1>
@@ -17,19 +63,19 @@
     <div class="kotak">
         <h2>INPUT SOAL SULIT</h2>
         <div class="inputbox1">
-            <input type="text" placeholder="Input Soal">
+            <input type="text" placeholder="Input Soal" id="teks_sulit">
         </div>
         <div class="pilihanganda">
             <div class="inputbox">
-                <input type="text" placeholder="Input Pilihan Benar">
+                <input type="text" placeholder="Input Pilihan Benar" id="pilihanbenar_sulit">
             </div>
 
             <div class="inputbox">
-                <input type="text" placeholder="Input Pilihan 2">
+                <input type="text" placeholder="Input Pilihan 2" id="pilihan1_sulit">
             </div>
 
             <div class="inputbox">
-                <input type="text" placeholder="Input Pilihan 3">
+                <input type="text" placeholder="Input Pilihan 3" id="pilihan2_sulit">
             </div>
         </div>
         <div class="footer">
@@ -38,7 +84,7 @@
             </div>
 
             <div class="inputbox">
-                <input type="submit" value=">> Next" id="bttn">
+                <input type="submit" value=">> Next" id="bttn" onclick="simpansoalsulit()">
             </div>
 
         </div>

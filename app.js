@@ -9,50 +9,133 @@ const overlay = document.getElementById('overlay');
 let questionCounter = 0;
 let currentQuestion;
 let availableQuestions = [];
+let availableQuestionsMudah = [];
+let availableQuestionsMenengah = [];
+let availableQuestionsSulit = [];
 let availableOptions = [];
 let count = 0;
 
+
 function setAvailableQuestions(){
-    const totalQuestions = quiz.length;
-    for(let i=0; i<totalQuestions; i++){
-        availableQuestions.push(quiz[i])
-    }
+    const totalQuestionsmudah = soalmudaharray.length;
+    const totalQuestionsmenengah = soalmenengaharray.length;
+    const totalQuestionssulit = soalsulitarray.length;
+    for(let i=0; i<totalQuestionsmudah; i++){
+        availableQuestionsMudah.push(soalmudaharray[i])
+    };
+    for(let i=0; i<totalQuestionsmenengah; i++){
+        availableQuestionsMenengah.push(soalmenengaharray[i])
+    };
+    for(let i=0; i<totalQuestionssulit; i++){
+        availableQuestionsSulit.push(soalsulitarray[i])
+    };
 }
+
 
 //set question number, text, and option
 function getNewQuestion(){
-    //the actual random part
-    const questionIndex = availableQuestions[Math.floor(Math.random() * availableQuestions.length)]
-    currentQuestion = questionIndex;
-    questionText.innerHTML = currentQuestion.q;
-    //console.log(questionIndex)
-    //get position of 'questionIndex' from 'availableQuestions' array
-    const index1 = availableQuestions.indexOf(questionIndex);
-    //remove the current 'questionIndex' from 'availableQuestions' array
-    availableQuestions.splice(index1,1)
-    const optionLength = currentQuestion.options.length
-    //push options into availableOptions array
-    for(let i=0; i<optionLength; i++){
-        availableOptions.push(i)
-    }
-    optionContainer.innerHTML = '';
-    //create options in inner html
-    for(let i=0; i<optionLength; i++){
-        //options randomizer
-        const optionIndex = availableOptions[Math.floor(Math.random() * availableOptions.length)];
-        //get the position of optionIndex from availableOptions
-        const index2 = availableOptions.indexOf(optionIndex);
-        //remove the option from availableOptions, so no repetition
-        availableOptions.splice(index2,1);
-        const option = document.createElement("button");
-        option.innerHTML = currentQuestion.options[optionIndex];
-        option.id = optionIndex;
-        option.className = "tombol";
-        optionContainer.appendChild(option);
-        option.setAttribute("onclick","getResult(this)")
-    }
+    if(questionCounter<10){
+        //the actual random part
+        const questionIndex = availableQuestionsMudah[Math.floor(Math.random() * availableQuestionsMudah.length)]
+        currentQuestion = questionIndex;
+        questionText.innerHTML = currentQuestion.q;
+        //console.log(questionIndex)
+        //get position of 'questionIndex' from 'availableQuestions' array
+        const index1 = availableQuestionsMudah.indexOf(questionIndex);
+        //remove the current 'questionIndex' from 'availableQuestions' array
+        availableQuestionsMudah.splice(index1,1)
+        const optionLength = currentQuestion.options.length
+        //push options into availableOptions array
+        for(let i=0; i<optionLength; i++){
+            availableOptions.push(i)
+        }
+        optionContainer.innerHTML = '';
+        //create options in inner html
+        for(let i=0; i<optionLength; i++){
+            //options randomizer
+            const optionIndex = availableOptions[Math.floor(Math.random() * availableOptions.length)];
+            //get the position of optionIndex from availableOptions
+            const index2 = availableOptions.indexOf(optionIndex);
+            //remove the option from availableOptions, so no repetition
+            availableOptions.splice(index2,1);
+            const option = document.createElement("button");
+            option.innerHTML = currentQuestion.options[optionIndex];
+            option.id = optionIndex;
+            option.className = "tombol";
+            optionContainer.appendChild(option);
+            option.setAttribute("onclick","getResult(this)")
+        }
     questionCounter++
+    }
+    else if(questionCounter>=10 && questionCounter<20){
+        //the actual random part
+        const questionIndex = availableQuestionsMenengah[Math.floor(Math.random() * availableQuestionsMenengah.length)]
+        currentQuestion = questionIndex;
+        questionText.innerHTML = currentQuestion.q;
+        //console.log(questionIndex)
+        //get position of 'questionIndex' from 'availableQuestions' array
+        const index1 = availableQuestionsMenengah.indexOf(questionIndex);
+        //remove the current 'questionIndex' from 'availableQuestions' array
+        availableQuestionsMenengah.splice(index1,1)
+        const optionLength = currentQuestion.options.length
+        //push options into availableOptions array
+        for(let i=0; i<optionLength; i++){
+            availableOptions.push(i)
+        }
+        optionContainer.innerHTML = '';
+        //create options in inner html
+        for(let i=0; i<optionLength; i++){
+            //options randomizer
+            const optionIndex = availableOptions[Math.floor(Math.random() * availableOptions.length)];
+            //get the position of optionIndex from availableOptions
+            const index2 = availableOptions.indexOf(optionIndex);
+            //remove the option from availableOptions, so no repetition
+            availableOptions.splice(index2,1);
+            const option = document.createElement("button");
+            option.innerHTML = currentQuestion.options[optionIndex];
+            option.id = optionIndex;
+            option.className = "tombol";
+            optionContainer.appendChild(option);
+            option.setAttribute("onclick","getResult(this)")
+        }
+    questionCounter++
+    }
+    else if(questionCounter>=20 && questionCounter<30){
+        //the actual random part
+        const questionIndex = availableQuestionsSulit[Math.floor(Math.random() * availableQuestionsSulit.length)]
+        currentQuestion = questionIndex;
+        questionText.innerHTML = currentQuestion.q;
+        //console.log(questionIndex)
+        //get position of 'questionIndex' from 'availableQuestions' array
+        const index1 = availableQuestionsSulit.indexOf(questionIndex);
+        //remove the current 'questionIndex' from 'availableQuestions' array
+        availableQuestionsSulit.splice(index1,1)
+        const optionLength = currentQuestion.options.length
+        //push options into availableOptions array
+        for(let i=0; i<optionLength; i++){
+            availableOptions.push(i)
+        }
+        optionContainer.innerHTML = '';
+        //create options in inner html
+        for(let i=0; i<optionLength; i++){
+            //options randomizer
+            const optionIndex = availableOptions[Math.floor(Math.random() * availableOptions.length)];
+            //get the position of optionIndex from availableOptions
+            const index2 = availableOptions.indexOf(optionIndex);
+            //remove the option from availableOptions, so no repetition
+            availableOptions.splice(index2,1);
+            const option = document.createElement("button");
+            option.innerHTML = currentQuestion.options[optionIndex];
+            option.id = optionIndex;
+            option.className = "tombol";
+            optionContainer.appendChild(option);
+            option.setAttribute("onclick","getResult(this)")
+        }
+    questionCounter++
+    }
 }
+
+
 
 //get the result of current selection of option
 function getResult(element){
@@ -64,7 +147,7 @@ function getResult(element){
         document.getElementById("playerScore").innerHTML = "Score: " + count;
         element.classList.add("correct");
         stopAnimation();
-        if(questionCounter === quiz.length){
+        if(questionCounter === 30){
             console.log("Congratulations, you finished the quiz!!");
             popuphasil();
             musuh.style.visibility = 'hidden';
@@ -86,11 +169,11 @@ function getResult(element){
     }
 }
 
+
 function popuphasil(){
     kotak.classList.add('active');
     overlay.classList.add('active')
 }
-    
 
 function stopAnimation(){
     // Hapus kelas CSS
@@ -155,9 +238,6 @@ function stopTimer(){
 
 window.onload = function(){
     //set all questions in the array
-    setAvailableQuestions();
-
-    getNewQuestion();
     
     narutoBergerak();
 

@@ -238,12 +238,17 @@ function stopTimer(){
 
 window.onload = function(){
     //set all questions in the array
+    setTimeout(function() {
+        setAvailableQuestions();
+
+        getNewQuestion();
+        
+        narutoBergerak();
     
-    narutoBergerak();
-
-    musuhMuncul();
-
-    startTimer();
+        musuhMuncul();
+    
+        startTimer();
+    }, 200);
 }
 
 

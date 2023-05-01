@@ -27,9 +27,9 @@
       <div class="boxjr">
         <img src="./image/profile icon.png" alt="" />
         <div class="nama">
-          <h1>Justin Tunggal</h1>
+          <h1 id="juara1"></h1>
           <div class="score">
-            <h1>100</h1>
+            <h1 id="juara1score"></h1>
           </div>
         </div>
       </div>
@@ -40,9 +40,9 @@
       <div class="boxjr2">
         <img src="./image/profile icon.png" alt="" />
         <div class="nama2">
-          <h1>Gerald Luntungan</h1>
+          <h1 id="juara2"></h1>
           <div class="score2">
-            <h1>90</h1>
+            <h1  id="juara2score"></h1>
           </div>
         </div>
       </div>
@@ -53,12 +53,46 @@
       <div class="boxjr3">
         <img src="./image/profile icon.png" alt="" />
         <div class="nama3">
-          <h1>Asher Lukas</h1>
+          <h1 id="juara3"></h1>
           <div class="score3">
-            <h1>80</h1>
+            <h1 id="juara3score"></h1>
           </div>
         </div>
       </div>
     </div>
+
+    <script>
+      let highscore =[];
+      const juara1 = document.getElementById("juara1");
+      const juara2 = document.getElementById("juara2");
+      const juara3 = document.getElementById("juara3");
+      const juara1score = document.getElementById("juara1score");
+      const juara2score = document.getElementById("juara2score");
+      const juara3score = document.getElementById("juara3score");
+
+      function showhighscore() {
+            let i = 1;
+
+            fetch('http://localhost:5000/highscore')
+            .then(response => response.json())
+            .then(data => {
+            highscore = data;
+            juara1.innerHTML = highscore[0].name;
+            juara1score.innerHTML = highscore[0].score;
+            juara2.innerHTML = highscore[1].name;
+            juara2score.innerHTML = highscore[1].score;
+            juara3.innerHTML = highscore[2].name;
+            juara3score.innerHTML = highscore[2].score;
+            
+          })
+            .catch(error => {
+            console.log(error);
+          });
+        }
+        window.onload = function(){
+          showhighscore();
+        }
+    </script>
+
   </body>
 </html>

@@ -98,3 +98,42 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:5000/soalsulit/0
+
+
+
+
+//Highscore
+
+###
+GET http://localhost:5000/highscore
+###
+GET http://localhost:5000/highscore/0
+
+###
+POST http://localhost:5000/highscore
+Content-Type: application/json
+
+{
+    "name": "TestNama",
+    "score": 99998
+}
+
+###
+PATCH  http://localhost:5000/highscore/0
+Content-Type: application/json
+
+{
+    "teks_menengah": "Test2",
+    "pilihanbenar_menengah": "Test2",
+    "pilihan1_menengah": "Test2",
+    "pilihan2_menengah": "Test2"
+}
+
+###
+DELETE http://localhost:5000/soalmenengah/0
+
+###
+GET http://localhost:5000/highscore/lowest
+
+###
+GET  http://localhost:5000/highscore/count

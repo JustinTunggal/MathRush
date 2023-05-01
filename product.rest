@@ -1,0 +1,100 @@
+//Soal Mudah
+
+GET http://localhost:5000/soalmudah
+
+###
+GET http://localhost:5000/soalmudah/0
+
+###
+POST http://localhost:5000/soalmudah
+Content-Type: application/json
+
+{
+    "teks_mudah": "Test 3",
+    "pilihanbenar_mudah": "Test3",
+    "pilihan1_mudah": "Test3",
+    "pilihan2_mudah": "Test3"
+}
+
+###
+PATCH  http://localhost:5000/soalmudah/0
+Content-Type: application/json
+
+{
+    "teks_mudah": "Test1",
+    "pilihanbenar_mudah": "Test1",
+    "pilihan1_mudah": "Test1",
+    "pilihan2_mudah": "Test1"
+}
+
+###
+DELETE http://localhost:5000/soalmudah/0
+
+
+
+//Soal Menengah
+
+###
+GET http://localhost:5000/soalmenengah
+
+###
+GET http://localhost:5000/soalmenengah/0
+
+###
+POST http://localhost:5000/soalmenengah
+Content-Type: application/json
+
+{
+    "teks_menengah": "Test 4",
+    "pilihanbenar_menengah": "Test4",
+    "pilihan1_menengah": "Test4",
+    "pilihan2_menengah": "Test4"
+}
+
+PATCH  http://localhost:5000/soalmenengah/0
+Content-Type: application/json
+
+{
+    "teks_menengah": "Test2",
+    "pilihanbenar_menengah": "Test2",
+    "pilihan1_menengah": "Test2",
+    "pilihan2_menengah": "Test2"
+}
+
+###
+DELETE http://localhost:5000/soalmenengah/0
+
+
+
+
+//Soal Sulit
+
+###
+GET http://localhost:5000/soalsulit
+
+###
+GET http://localhost:5000/soalsulit/0
+
+###
+POST http://localhost:5000/soalsulit
+Content-Type: application/json
+
+{
+    "teks_sulit": "Test 5",
+    "pilihanbenar_sulit": "Test5",
+    "pilihan1_sulit": "Test5",
+    "pilihan2_sulit": "Test5"
+}
+
+PATCH  http://localhost:5000/soalsulit/0
+Content-Type: application/json
+
+{
+    "teks_sulit": "Test3",
+    "pilihanbenar_sulit": "Test3",
+    "pilihan1_sulit": "Test3",
+    "pilihan2_sulit": "Test3"
+}
+
+###
+DELETE http://localhost:5000/soalsulit/0

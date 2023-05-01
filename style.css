@@ -1,0 +1,324 @@
+/* mathrush pe css */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: url(./image/langit-crop.gif) top no-repeat;
+  background-size: 2000px 750px;
+}
+
+.textmath {
+  font-size: 50px;
+  margin-top: 0;
+}
+
+.username {
+  font-size: xx-large;
+  color: #b6acac;
+}
+
+.game {
+  text-align: center;
+  left: 50%;
+  top: 75%;
+  transform: translate(-50%, -0%);
+}
+
+.score {
+  font-size: xx-large;
+  color: #e60303;
+}
+
+.atasan {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.gambar {
+  width: 50px;
+  height: 50px;
+}
+
+.gambar1 {
+  width: 50px;
+  height: 50px;
+}
+
+.char {
+  position: relative;
+}
+
+.char img {
+  width: 180px;
+  height: 230px;
+  position: relative;
+  top: 328px;
+  left: 100px;
+  animation: gerak 5s infinite ease-in-out; 
+
+}
+
+@keyframes gerak {
+  0% {
+    transform: translate(6px, 6px);
+  }
+  20% {
+    transform: translate(20px, 14px);
+  }
+  40% {
+    transform: translate(-15px, 16px);
+  }
+  60% {
+    transform: translate(18px, 23px);
+  }
+  80% {
+    transform: translate(10px, 9px);
+  }
+  100% {
+    transform: translate(6px, 6px);
+  }
+}
+
+@keyframes gerak1 {
+  0% {
+    transform: translate(6px, 6px);
+  }
+  20% {
+    transform: translate(-16px, 14px);
+  }
+  40% {
+    transform: translate(-19px, 6px);
+  }
+  60% {
+    transform: translate(-16px, 23px);
+  }
+  80% {
+    transform: translate(-7px, 9px);
+  }
+  100% {
+    transform: translate(6px, 6px);
+  }
+}
+
+#musuh img {
+  width: 125px;
+  height: 150px;
+  position: relative;
+  top: 115px;
+  left: 1800px;
+}
+
+#asap img {
+  width: 150px;
+  height: auto;
+  position: absolute;
+  margin-left: 900px;
+  top: 370px;
+}
+
+.block img {
+  animation: block 20s linear, gerak1 5s infinite;
+  animation-fill-mode: forwards;
+}
+
+.asap img {
+  animation: block 20s linear;
+  animation-fill-mode: forwards;
+}
+
+.pilihan {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.pilihan .tombol {
+  width: 100px;
+  height: 50px;
+  border: none;
+  border-radius: 50px;
+  font-size: x-large;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  transition: color 0.15s;
+}
+
+.pilihan .tombol:hover {
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
+}
+
+.pilihan .tombol:active {
+  background-color: green;
+  color: white;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+.tanah {
+  width: auto;
+  height: 333px;
+  margin-top: 153px;
+  background-image: url(./image/Free\ Vector\ _\ Nature\ scene\ with\ field\ and\ underground\ 1.png);
+  background-repeat: no-repeat;
+}
+
+section {
+  background-image: url(./image/Free\ Vector\ _\ Nature\ scene\ with\ field\ and\ underground\ 1.png);
+  top: 100%;
+  opacity: 1;
+}
+
+#Questions {
+  width: 500px;
+  height: 250px;
+  border: none;
+  padding: 20px;
+  text-align: center;
+  border-radius: 20px;
+  background: rgba(125, 123, 123, 0.9);
+  position: absolute;
+  top: 84%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pertanyaan {
+  font-size: 40px;
+  color: white;
+}
+
+@keyframes block {
+  0% {
+    left: 1700px;
+  }
+  100% {
+    left: 200px;
+  }
+}
+
+.kotak {
+  width: 967px;
+  height: 350px;
+  background-color: rgba(92, 87, 87, 0.95);
+  color: white;
+  border-radius: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  scale: 0;
+  position: absolute;
+  text-align: center;
+  align-items: center;
+  z-index: 10;
+  transition: width 1s ease-in;
+}
+
+.kotak.active {
+  scale: 1;
+}
+
+
+.kotak .gameovertext {
+  font-size: 100px;
+  color: #c82222;
+  animation: color-change 5s infinite;
+}
+
+@keyframes color-change {
+  0% {
+    color: #c82222;
+  }
+  15% {
+    color: #c82222;
+  }
+  30% {
+    color: bisque;
+  }
+  50% {
+    color: burlywood;
+  }
+  75% {
+    color: rgb(106, 129, 170);
+  }
+  90% {
+    color: cornflowerblue;
+  }
+  100% {
+    color: #330a0a;
+  }
+}
+
+.kotak .button {
+  width: 160px;
+  height: 50px;
+  font-size: 25px;
+  border: none;
+  border-radius: 12px;
+  color: #d1d0d0;
+  background: transparent;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.kotak .button:hover {
+  color: black;
+  background-color: #d1d0d0;
+}
+
+#overlay {
+  position: fixed;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+#overlay.active {
+  pointer-events: all;
+  opacity: 1;
+}

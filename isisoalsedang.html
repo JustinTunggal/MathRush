@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./isisoal.css">
+    <title>Admin Math Rush</title>
+</head>
+<body>
+    <script>
+        function simpansoalmenengah(){
+            
+            var teks = document.getElementById("teks_menengah").value;
+            var pilihanbenar = document.getElementById("pilihanbenar_menengah").value;
+            var pilihan1 = document.getElementById("pilihan1_menengah").value;
+            var pilihan2 = document.getElementById("pilihan2_menengah").value;
+
+            const soalmenengah = {
+                teks_menengah: teks,
+                pilihanbenar_menengah: pilihanbenar,
+                pilihan1_menengah: pilihan1,
+                pilihan2_menengah: pilihan2
+            }
+
+            if(teks!='' && pilihanbenar!='' && pilihan1!='' && pilihan2!=''){
+                fetch('http://localhost:5000/soalmenengah', {
+                    method: 'POST',
+                    headers: {
+                    'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(soalmenengah)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(soalmenengah);
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+            }
+
+            document.querySelector('#teks_menengah').value = '';
+            document.querySelector('#pilihanbenar_menengah').value = '';
+            document.querySelector('#pilihan1_menengah').value = '';
+            document.querySelector('#pilihan2_menengah').value = '';
+        };
+
+    </script>
+
+
+    <div class="atasan">
+        <img src="./image/logo Della 1.png" alt="">
+        <h1 style="color: #FF2B2B;">Math<span style="color: #FF9900;">Rush</span></h1>
+        <img src="./image/Logo Sekolah (Latar Transparan) 1.png" alt="">
+    </div>
+
+    <div class="kotak">
+        <h2>INPUT SOAL SEDANG</h2>
+        <div class="inputbox1">
+            <input type="text" placeholder="Input Soal" id="teks_menengah">
+        </div>
+        <div class="pilihanganda">
+            <div class="inputbox">
+                <input type="text" placeholder="Input Pilihan Benar" id="pilihanbenar_menengah">
+            </div>
+
+            <div class="inputbox">
+                <input type="text" placeholder="Input Pilihan 2" id="pilihan1_menengah">
+            </div>
+
+            <div class="inputbox">
+                <input type="text" placeholder="Input Pilihan 3" id="pilihan2_menengah">
+            </div>
+        </div>
+        <div class="footer">
+            <div class="inputbox">
+                <input type="submit" value="⌂ Home" id="bttn" onclick="location.href='pilihsoal.html';">
+            </div>
+
+            <div class="inputbox">
+                <input type="submit" value=">> Next" id="bttn" onclick="simpansoalmenengah()">
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

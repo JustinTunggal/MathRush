@@ -1,0 +1,107 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./style.css">
+        <title>MATH RUSH</title>
+    </head>
+    <body>
+        <div id="score" class="atasan">
+            <h1 class="username" id="us"></h1>
+            <h1 class="textmath" style="color: #FF2B2B;">Math<span style="color: #FF9900;">Rush</span></h1>
+            <h1 class="score" id="playerScore">Score: 0</h1>
+        </div>
+
+        <div class="game">
+            <div class="char" id="naruto"></div>
+            <div class="block" id="musuh"></div>
+        </div>
+        
+        <div class="tanah">
+            <div id="Questions">
+                <div class="pertanyaan"></div>
+                <div class="pilihan"></div>
+            </div>
+        </div>
+
+        <div class="popup" id="popup">
+            <div class="kotak" id="kotak">
+                <h1 class="gameovertext">GAME OVER</h1>
+                <a href="home.html"><button class="button">Back Home</button></a>
+            </div>
+        </div>
+
+        <div id="overlay"></div>
+
+    <script src="./question.js"></script>
+    <script src="./app.js"></script>
+    <script>
+        fetch('http://localhost:5000/soalmudah')
+        .then(response => response.json())
+        .then(data => {
+        easyquestions = data;
+        easyquestions.forEach(easyquestion => {
+        
+            questions = {
+                q: easyquestion.teks_mudah,
+                options: [easyquestion.pilihanbenar_mudah, easyquestion.pilihan1_mudah, easyquestion.pilihan2_mudah],
+                answer:0
+            };
+
+            soalmudaharray.push(questions);
+            });
+
+            console.log(soalmudaharray);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
+        fetch('http://localhost:5000/soalmenengah')
+        .then(response => response.json())
+        .then(data => {
+        mediumquestions = data;
+        mediumquestions.forEach(mediumquestion => {
+        
+            questions = {
+                q: mediumquestion.teks_menengah,
+                options: [mediumquestion.pilihanbenar_menengah, mediumquestion.pilihan1_menengah, mediumquestion.pilihan2_menengah],
+                answer:0
+            };
+
+            soalmenengaharray.push(questions);
+            });
+
+            console.log(soalmenengaharray);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
+        fetch('http://localhost:5000/soalsulit')
+        .then(response => response.json())
+        .then(data => {
+        hardquestions = data;
+        hardquestions.forEach(hardquestion => {
+        
+            questions = {
+                q: hardquestion.teks_sulit,
+                options: [hardquestion.pilihanbenar_sulit, hardquestion.pilihan1_sulit, hardquestion.pilihan2_sulit],
+                answer:0
+            };
+
+            soalsulitarray.push(questions);
+            });
+
+            console.log(soalsulitarray);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
+    </script>
+    <script src="./home.js"></script>
+    </body>
+    </html>

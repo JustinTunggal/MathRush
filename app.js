@@ -143,7 +143,7 @@ function getResult(element){
     //result come from comparing id of clicked question to id of answer
     if(id === currentQuestion.answer){
         console.log("Answer correct");
-        count+=1;
+        count=count+countDown*100;
         document.getElementById("playerScore").innerHTML = "Score: " + count;
         element.classList.add("correct");
         stopAnimation();
@@ -153,6 +153,7 @@ function getResult(element){
             musuh.style.visibility = 'hidden';
             narutoDiam();
             countDown = 20;
+            pushhighscore();
         }
         else{
             getNewQuestion();
@@ -166,6 +167,7 @@ function getResult(element){
         popuphasil();
         narutoDiam();
         musuh.style.visibility = 'hidden';
+        pushhighscore();
     }
 }
 
@@ -173,6 +175,81 @@ function getResult(element){
 function popuphasil(){
     kotak.classList.add('active');
     overlay.classList.add('active')
+}
+
+function pushhighscore(){
+    const nama = localStorage.getItem("storedItem");
+    let highscoredbs = [];
+    let smallestvaluescore;
+    let smallestvalueid;
+    let dblength;
+    const highscore = {
+        name: nama,
+        score: count,
+    }
+    console.log(highscore);
+    fetch('http://localhost:5000/highscore/lowest')
+    .then(response => response.json())
+    .then(data => {
+        highscoredbs = data;
+        smallestvaluescore = highscoredbs.score;
+        smallestvalueid = highscoredbs.id;
+        console.log(smallestvaluescore);
+        console.log(smallestvalueid);
+    })
+    .catch(error => {
+        console.log(error);
+    });
+
+    fetch('http://localhost:5000/highscore/count')
+    .then(response => response.json())
+    .then(data => {
+        highscoredbs = data;
+        dblength = data.count;
+        console.log(dblength);
+    })
+    .catch(error => {
+        console.log(error);
+    });
+    
+    setTimeout(function() {
+        if(smallestvaluescore < count && dblength == 3){
+            fetch(`http://localhost:5000/highscore/${smallestvalueid}`, {
+                        method: 'PATCH',
+                        headers: {
+                        'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(highscore)
+            })
+            .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+            })
+            .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+            });
+        }
+        else if(dblength < 3){
+            fetch('http://localhost:5000/highscore', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(highscore)
+            })
+            .then(response => {
+                if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+            })
+            .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+            });
+        }
+    }, 500);
 }
 
 function stopAnimation(){

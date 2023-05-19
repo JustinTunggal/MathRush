@@ -34,7 +34,21 @@
         </div>
 
         <div id="overlay"></div>
-
+        <audio id="bgmusic" controls autoplay loop>
+            <source src="./Super Mario 3D World - Super Bell Hill.mp3" type="audio/mp3">
+        </audio>
+        <style>
+            #bgmusic::-webkit-media-controls {
+              display: none !important;
+            }
+            #bgmusic::-webkit-media-controls-enclosure {
+              display: none !important;
+            }
+            #bgmusic::-webkit-media-controls-panel {
+              display: none !important;
+            }
+        </style>
+        
     <script src="./question.js"></script>
     <script src="./app.js"></script>
     <script>
